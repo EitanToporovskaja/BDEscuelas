@@ -1,0 +1,10 @@
+<div class="customCard shadow-lg rounded">
+  <img class="mb-3 rounded" src="@ViewBag.Alumno.FotoAlumno" width="100%">
+  <h4 class="mb-3">@ViewBag.Alumno.NombreAlumno</h4>
+  <p><span class="font-weight-bold">DNI : </span>@ViewBag.Alumno.DNI </p>
+  <p><span class="font-weight-bold">Fecha Nacimiento : </span>@ViewBag.Alumno.FechaNacimientoAlumno.ToShortDateString() </p>
+  <p><span class="font-weight-bold">Curso : </span>@ViewBag.Alumno.NombreCurso</p>
+  <a href='@Url.Action("Alumnos", "Home")' class="btn btn-primary">Volver</a>
+</div>
+
+<script type="text/javascript" src="/js/confetti-effect.js"></script>

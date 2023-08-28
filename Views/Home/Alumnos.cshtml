@@ -1,0 +1,39 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Alumnas y Alumnos</h1>
+    @{
+        if(ViewBag.AlumnoMasJoven!=null) { 
+            <p class="lead">El alumno/a mas joven es @ViewBag.AlumnoMasJoven.NombreAlumno y su fecha es @ViewBag.AlumnoMasJoven.FechaNacimientoAlumno.ToShortDateString()</p>
+        }
+        else{
+            <p class="lead">No hay Alumnos en la base</p>
+        }
+    }
+    <a class="btn btn-primary" href='@Url.Action("CrearAlumno","Home")'>Agregar Nueva/o Alumna/o</a>
+  </div>
+</div>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Fecha Nacimiento</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (Alumno item in ViewBag.ListaAlumnos)
+    {
+        <tr>
+            <th scope="row">@item.IdAlumno</th>
+            <td>@item.NombreAlumno</td>
+            <td>@item.FechaNacimientoAlumno.ToShortDateString()</td>
+            <td>
+                <a class="btn btn-info" href='@Url.Action("VerDetalleAlumno","Home", new {IdAlumno = item.IdAlumno})'>Ver Detalle</a>
+                <a class="btn btn-danger" href='@Url.Action("EliminarAlumno","Home",new {IdAlumno = item.IdAlumno})'>Eliminar</a>
+            </td>
+        </tr>
+    }
+  </tbody>
+</table>

@@ -1,0 +1,47 @@
+<div class="mx-auto text-center col-6">
+    <div class="my-5">
+        <h3>Crear un Alumno/a</h3>
+    </div>
+    <form action='@Url.Action("GuardarAlumno")' method="post">
+        <div class="mb-5">
+            <label class="form-label">DNI</label>
+            <input class="form-control" type="number" name="DNI" required>
+        </div>
+        <div class="mb-5">
+            <label class="form-label">Nombre</label>
+            <input class="form-control" type="text" name="NombreAlumno" required>
+        </div>
+        <div class="mb-5">
+            <label class="form-label">Foto</label>
+            <input class="form-control" type="text" name="FotoAlumno" required>
+        </div>
+        <div class="mb-5">
+            <label class="form-label">Curso</label>
+            <select class="form-control form-select form-select-lg" name="IdCurso">
+                <option value="-1">Seleccioná una Opción de la Lista</option>
+                @foreach (Curso c in ViewBag.ListaCursos)
+                {
+                    <option value="@c.IdCurso">@c.NombreCurso</option>
+                }
+            </select>
+        </div>
+        <div class="mb-5">
+            <label class="form-label">Fecha Nacimiento</label>
+            <input class="form-control" type="date" name="FechaNacimientoAlumno" required>
+        </div>
+        <div class="my-5">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a href='@Url.Action("Alumnos", "Home")' class="btn btn-primary">Volver sin Guardar</a>
+
+        </div>
+    </form>
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger fade show text-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                <use xlink:href="#exclamation-triangle-fill" />
+            </svg>
+            <strong>@ViewBag.Error</strong>
+        </div>
+    }
+</div>
